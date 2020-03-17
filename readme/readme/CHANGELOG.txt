@@ -1,0 +1,67 @@
+~~~~~~~~~~~~~~~~
+version 1.7
+~~~~~~~~~~~~~~~~
+
+* add requirements.txt for pexpect and pycrypto
+* update README.md
+
+~~~~~~~~~~~~~~~~
+version 1.6
+~~~~~~~~~~~~~~~~
+
+* add queue support for when large deployments occur - all memory based queue - tested on large deployment of 2000 - seems to work fine
+* lock for restarting is now a global variable vs. file - better to do in memory than having to write to disk
+* moved all the wxs stuff to the wxs directory including the ps1 directory
+
+~~~~~~~~~~~~~~~~
+version 1.5.4
+~~~~~~~~~~~~~~~~
+
+* fixed up python2 and python3 compatibility and going through encoding hell (appreciate the support somepublicgithubact)
+* fixed a bug that would cause ossec to not provision if running on a system that was a duplicate
+* better OSX breakout for darwin/linux
+* added auto_server.bin in case you need complied server
+
+~~~~~~~~~~~~~~~~
+version 1.5.3
+~~~~~~~~~~~~~~~~
+
+* changed file to open for python3 compatibility
+* large rework for python2 and python3 compatibility
+* fixed star working on systems
+* changed service ossec stop to /var/ossec/bin/ossec-control stop
+* added OSX support (thanks branchnetconsulting)
+
+~~~~~~~~~~~~~~~~
+version 1.5.2
+~~~~~~~~~~~~~~~~
+
+* removed duplicate additions in for Windows - when installing - auto-ossec will use regular expressions instead of basic logic in order to determine if server-ip already exists
+* instead of moving towards replacing existing entries, this became problematic for non-standard use/edge cases - instead auto-ossec now bundles the entire OSSEC config into the exe, bin, and .py files. This is useful so you never have a duplicate ever in the config file when doing multiple deployments. Whats also nice about this method is you can centrally manage one config option - so you can basically just make your changes in the .py file, make a binary through pyinstaller or py2exe, then deploy one consistent system across the board
+
+~~~~~~~~~~~~~~~~
+verison 1.5.1
+~~~~~~~~~~~~~~~~
+
+* changed it so the user can specify the URL not hardcoded URLs. This might be good for folks that don't want to use the regular website and specify their own or if they have an SSL issue, can switch to HTTP
+
+~~~~~~~~~~~~~~~~
+version 1.5
+~~~~~~~~~~~~~~~~
+
+* removed config options for Linux as it is not needed to modify the config options - should specify server IP when you do the install
+* added new option to automatically install Linux through urllib2 which will download and install it automatically for you
+* updated installation guidelines to reflect new changes to auto_ossec
+* added cleanup for old static files on auto install
+* added better options for flexibility on argv values for star and y
+* fixed no loop when starting ossec_server for 5 minute check
+
+~~~~~~~~~~~~~~~~
+version 1.4
+~~~~~~~~~~~~~~~~
+
+* added allow reuse for threadedtcp server to allow binding immediately when the port is shut down
+* added linux binary to allow native deployment of linux without python-crypto needed
+* formatted in autopep8 for consistency on tab indentation
+* added ability to use star as an IP address
+* added python3 compatibility

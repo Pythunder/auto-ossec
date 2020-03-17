@@ -45,7 +45,7 @@ class MarkdownHeaderButtonElement extends MarkdownButtonElement {
     super()
 
     const level = parseInt(this.getAttribute('level') || 3, 10)
-    if (level < 1 || level > 6) {
+    if (level > 6) {
       return
     }
 
@@ -134,18 +134,6 @@ class MarkdownLinkButtonElement extends MarkdownButtonElement {
 if (!window.customElements.get('md-link')) {
   window.MarkdownLinkButtonElement = MarkdownLinkButtonElement
   window.customElements.define('md-link', MarkdownLinkButtonElement)
-}
-
-class MarkdownImageButtonElement extends MarkdownButtonElement {
-  constructor() {
-    super()
-    styles.set(this, {prefix: '![', suffix: '](url)', replaceNext: 'url', scanFor: 'https?://'})
-  }
-}
-
-if (!window.customElements.get('md-image')) {
-  window.MarkdownImageButtonElement = MarkdownImageButtonElement
-  window.customElements.define('md-image', MarkdownImageButtonElement)
 }
 
 class MarkdownUnorderedListButtonElement extends MarkdownButtonElement {
